@@ -1,12 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Nunito } from "next/font/google";
 import "./globals.css";
+import { Header } from "../components/shared/header";
 
-const inter = Inter({ subsets: ["latin"] });
+const nunito = Nunito({
+  subsets: ["cyrillic"],
+  variable: "--font-nunito",
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
 
 export const metadata: Metadata = {
-  title: "Contrl Pizza",
-  description: "Contrl pizza store",
+  title: "Contrl Pizza | Главная",
+  description: "Contrl pizza store main",
 };
 
 export default function RootLayout({
@@ -16,7 +21,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={inter.className}>{children}</body>
+      <body className={nunito.className}>
+        <main className="min-h-screen">
+          <Header />
+          {children}
+        </main>
+      </body>
     </html>
   );
 }
